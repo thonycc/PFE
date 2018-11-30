@@ -21,9 +21,9 @@ def train_net(net,
               gpu=False,
               img_scale=0.7):
 
-    dir_img = '/home/leroux/pfe/datapfe/images/'
-    dir_mask = '/home/leroux/pfe/datapfe/masks/'
-    dir_checkpoint = '/home/leroux/pfe/checkpoints/'
+    dir_img = './datapfe/images/'
+    dir_mask = './datapfe/masks/'
+    dir_checkpoint = './checkpoints/'
 
     ids = get_ids(dir_img)
     ids = split_ids(ids)
@@ -66,7 +66,7 @@ def train_net(net,
            # imgs = np.array(np.asarray([i[0] for i in b]), dtype=object) #.astype(np.float32)
 	    #default one: imgs = np.array([i[0] for i in b]).astype(np.float32)
             print([i[0].size for i in b])
-	        imgs = np.array([i[0] for i in b]).astype(np.float32)
+            imgs = np.array([i[0] for i in b]).astype(np.float32)
             true_masks = np.array([i[1] for i in b])
 
             imgs = torch.from_numpy(imgs)
@@ -90,7 +90,7 @@ def train_net(net,
             loss.backward()
             optimizer.step()
 
-        print('Epoch finished ! Loss: {}'.format(epoch_loss / i))
+        print('Epoch finished ! Loss: {}'.format(epoch_loss / (i+1)))
 
         if 1:
             val_dice = eval_net(net, val, gpu)

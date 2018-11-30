@@ -23,7 +23,7 @@ def split_ids(ids, n=2):
 def to_cropped_imgs(ids, dir, suffix, scale):
     """From a list of tuples, returns the correct cropped img"""
     if suffix == '.txt':
-    	for id, pos in ids:
+        for id, pos in ids:
             im = resize_and_crop(Image.fromarray(np.loadtxt(dir + id + suffix)), scale=scale)
 	    #pour passer en 3d
             im = im[:, :, newaxis]
@@ -33,11 +33,11 @@ def to_cropped_imgs(ids, dir, suffix, scale):
 #	    im = resize_and_crop(Image.fromarray(yolo[:,~yolo2]), scale=scale)
 
 #default one            yield get_square(im, pos)
-	    yield im
+        yield im
 #test
     else:
-    	for id, pos in ids:
-	    im = resize_and_crop(Image.open(dir + id + suffix), scale=scale)
+        for id, pos in ids:
+            im = resize_and_crop(Image.open(dir + id + suffix), scale=scale)
 #	    im = resize_and_crop(Image.fromarray(np.genfromtxt(dir + id + suffix, delimiter=' -', invalid_raise=False).reshape(850,850), scale=scale)
             yield get_square(im, pos)
 #test

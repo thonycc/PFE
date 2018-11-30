@@ -40,7 +40,7 @@ def resize_and_crop(pilimg, scale=0.7, final_height=572):
         diff = 0
     else:
         diff1 = newH - final_height
-	diff2 = newW - final_w
+        diff2 = newW - final_w
 #    diff = 6
     img = pilimg.resize((newW, newH))
     img = img.crop((0, diff1 // 2, newW - diff2, newH - diff1 // 2))
