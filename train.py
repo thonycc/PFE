@@ -60,6 +60,7 @@ def train_net(net,
         val = get_imgs_and_masks(iddataset['val'], dir_img, dir_mask, img_scale)
 
         epoch_loss = 0
+        correct = 0
 
         for i, b in enumerate(batch(train, batch_size)):
 	    
@@ -89,8 +90,10 @@ def train_net(net,
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
+            
 
-        print('Epoch finished ! Loss: {}'.format(epoch_loss / (i+1)))
+
+        print('Epoch finished ! Loss: {}, Accuracy: {}'.format(epoch_loss / (i+1), correct))
 
         if 1:
             val_dice = eval_net(net, val, gpu)

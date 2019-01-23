@@ -27,9 +27,9 @@ def train_net(net,
               class_mark = [0,3,2,7]
               ):
 
-    dir_img = '/space/homes/student02/pfe/pfe/datapfe/images/'
-    dir_mask = '/space/homes/student02/pfe/pfe/datapfe/masks/'
-    dir_checkpoint = '/space/homes/student02/pfe/pfe/unetv0c/checkpoints/'
+    dir_img = '../datapfe/images/'
+    dir_mask = '../datapfe/masks/'
+    dir_checkpoint = '../checkpoints/'
 
     ids = get_ids(dir_img)
     ids = split_ids(ids)
